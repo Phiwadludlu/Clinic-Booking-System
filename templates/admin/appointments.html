@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "_formhelpers.html" import render_field%}
+{% block title %} Book an appointment - DUT Clinic {% endblock title %}
+{% block body %}
+
+<div class="container py-3 ">
+    <form method="POST" action="{{url_for("blueprint.appointment")}}" >
+    
+    {{form.csrf_token}}
+        
+    {{render_field(form.clinic, class= "form-control ")}}
+    {{render_field(form.user, class = "form-control")}}
+    {{render_field(form.time_slot, class="form-control")}}
+    <button type="submit" class="btn btn-primary mt-3">Submit booking</button>
+</form>
+</div>
+{% endblock body %}

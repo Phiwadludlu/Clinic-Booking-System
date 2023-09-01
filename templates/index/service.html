@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Service - DUT Clinic {% endblock title %}
+{% block body %}
+
+<div class="container-fluid bg-primary py-5 hero-header mb-5">
+    <div class="row py-3">
+        <div class="col-12 text-center">
+            <h1 class="display-3 text-white animated zoomIn">Services</h1>
+            <a href="{{ url_for ('blueprint.index')}}" class="h4 text-white">Home</a>
+            <i class="far fa-circle text-white px-2"></i>
+            <a href="{{ url_for ('blueprint.about_page')}}" class="h4 text-white">Services</a>
+        </div>
+    </div>
+</div>
+
+<!--Services-->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+    <div class="container">
+        <div class="row g-5 mb-5">
+            
+            <div class="col-lg-7">
+                <div class="section-title mb-5">
+                    <h5 class="position-relative d-inline-block text-primary text-uppercase">Our Services</h5>
+                    <h1 class="display-5 mb-0">We Offer The Best Quality Dental Services</h1>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: zoomIn;">
+                        <div class="rounded-top overflow-hidden">
+                            <img class="img-fluid" src="https://media.istockphoto.com/id/656712076/photo/patient-getting-a-blood-test-from-a-doctor.jpg?s=612x612&w=0&k=20&c=Ob-EnLKRfJmPTnLbUkGG1tRhnVnRZcPBlRX6H_T3AHM=" alt="">
+                        </div>
+                        <div class="position-relative bg-light rounded-bottom text-center p-4">
+                            <h5 class="m-0">HIV Testing</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.9s" style="visibility: visible; animation-delay: 0.9s; animation-name: zoomIn;">
+                        <div class="rounded-top overflow-hidden">
+                            <img class="img-fluid" src="https://st3.depositphotos.com/1010550/37590/i/450/depositphotos_375906212-stock-photo-close-woman-holding-contraceptive-pills.jpg" alt="">
+                        </div>
+                        <div class="position-relative bg-light rounded-bottom text-center p-4">
+                            <h5 class="m-0">Contrapceptives</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <div class="col-lg-7">
+                <div class="row g-5">
+                    <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: zoomIn;">
+                        <div class="rounded-top overflow-hidden">
+                            <img class="img-fluid" src="https://st4.depositphotos.com/1005844/20812/i/450/depositphotos_208125146-stock-photo-typical-prep-pill-grey-background.jpg" alt="">
+                        </div>
+                        <div class="position-relative bg-light rounded-bottom text-center p-4">
+                            <h5 class="m-0">Prep Services</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: zoomIn;">
+                        <div class="rounded-top overflow-hidden">
+                            <img class="img-fluid" src="https://st.depositphotos.com/1010613/3612/i/450/depositphotos_36129519-stock-photo-doctors-hand-checking-blood-pressure.jpg" alt="">
+                        </div>
+                        <div class="position-relative bg-light rounded-bottom text-center p-4">
+                            <h5 class="m-0">Medical CheckUp</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 service-item wow zoomIn" data-wow-delay="0.9s" style="visibility: visible; animation-delay: 0.9s; animation-name: zoomIn;">
+                <div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-4">
+                    <h3 class="text-white mb-3">Make Appointment</h3>
+                    <p class="text-white mb-3">Clita ipsum magna kasd rebum at ipsum amet dolor justo dolor est magna stet eirmod</p>
+                    <h2 class="text-white mb-0">+012 345 6789</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--EndServices-->
+
+{% include 'components/footer.html' %}
+{% endblock %}
