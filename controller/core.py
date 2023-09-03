@@ -42,6 +42,10 @@ def appointment():
             db.session.commit()
             flash(message="Form was submitted succesfully", category="success")
             return redirect(url_for("blueprint.index"))
-   
+        else:
+
+            flash("Choose a time between 0900h and 1700h")
+            return render_template("admin/appointments.html", form=form )
+        
     return render_template("admin/appointments.html", form=form )
 

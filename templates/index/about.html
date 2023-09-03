@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}About Us - DUT Clinic {% endblock title %}
+{% include "components/navbar.html"%}
 {% block body %}
 <div class="container-fluid bg-primary py-5 hero-header mb-5">
     <div class="row py-3">
@@ -41,5 +42,6 @@
     </div>
 </div>
 {% include 'components/footer.html' %}
+{% include 'components/allrights.html'%}
 
 {%endblock body%}

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% from "_formhelpers.html" import render_field%}
 {% block title %} Book an appointment - DUT Clinic {% endblock title %}
+{% include 'components/navbar.html'%}
 {% block body %}
 
 <div class="container py-3 ">
@@ -10,8 +11,9 @@
         
     {{render_field(form.clinic, class= "form-control ")}}
     {{render_field(form.user, class = "form-control")}}
-    {{render_field(form.time_slot, class="form-control")}}
+    {{render_field(form.time_slot, class="form-control mt-3")}}
     <button type="submit" class="btn btn-primary mt-3">Submit booking</button>
 </form>
 </div>
+{% include 'components/allrights.html'%}
 {% endblock body %}

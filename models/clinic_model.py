@@ -18,7 +18,8 @@ class Appointment(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     clinic_id = db.Column(db.Integer, db.ForeignKey('clinics.id'), nullable=False)
-    appointment_time = db.Column(db.Time, nullable=False)
+    appointment_date = db.Column(db.Date)
+    appointment_time = db.Column(db.Time)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 

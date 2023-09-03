@@ -1,11 +1,11 @@
 {% macro render_field(field) %}
   {% if field.id != 'csrf_token' %}
   
-  {% if field.flags.required %}<div class="form-label">{{ field.label}}*</div>
+  {% if field.flags.required %}<div class="form-label mt-3">{{ field.label}}*</div>
   {% else %}
-  <div class="form-label">{{ field.label(class="form-label mt-2")}}</div>
+  <div class="form-label">{{ field.label(class="form-label mt-3")}}</div>
   {% endif %}
-  <div>{{ field(**kwargs) }}
+  <div >{{ field(**kwargs) }}
   {% endif %}
   {% if field.errors %}
     <ul class=errors>

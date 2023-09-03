@@ -25,7 +25,7 @@ def add_clinics():
             db.session.add(clinic)
             db.session.commit()
             
-            return url_for("blueprint.index")
+            return redirect(url_for("blueprint.index"))
         return render_template("forms/clinic_form.html")
             
   
