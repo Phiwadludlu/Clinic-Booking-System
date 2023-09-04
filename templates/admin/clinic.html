@@ -3,42 +3,83 @@
 {%block title %} Manage Clinics {%endblock title %}
 
 {%block body %}
-<div class="row ">
-    <div class="col-sm-3 d-none d-lg-block">
-        {{render_sidebar("clinics",current_user)}}
-    </div>
-    <div class="col-sm-9 py-3">
-        <div class="mb-4">
-            <h3>Manage Clinics</h3>
+<div id="app">
+    <div class="row ">
+        <div class="col-sm-3 d-none d-lg-block">
+            {{render_sidebar("clinics",current_user)}}
         </div>
-        <div class="col-sm-3 mb-3 ">
-            <form action="" method="get" >
-                <input type="search" name="" id="" class="form-control col-sm-3" placeholder="Search by name">
-            </form>
-        </div>
-        <div class="table-responsive">
-            <table class="table ">
-                <thead>
-                    <tr>
-                        <th scope="col"><i class="fa fa-id-card" aria-hidden="true"></i> Id</th>
-                        <th scope="col"><i class="fa fa-user" aria-hidden="true"></i> Clinic Name</th>
-                        <th scope="col"><i class="fa fa-envelope-o" aria-hidden="true"></i>Date Created</th>
-                        <button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Clinic</button>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for clinic in clinics %}
-                    <tr class="">
-                        <td>{{clinic.id}}</td>
-                        <td scope="row">{{clinic.clinic_name}}</td>
-                        <td>{{clinic.created_at}}</td>
-                        
-                    </tr>
-                    {%endfor %}
+        <div class="col-sm-9 py-3">
+            <div class="mb-4">
+                <h3>Manage Clinics</h3>
+            </div>
+            <div class="col-sm-3 mb-3 ">
+                <form action="" method="get">
+                    <input type="search" name="" id="" class="form-control col-sm-3" placeholder="Search by name">
+                </form>
+            </div>
+            <div class="table-responsive">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th scope="col"><i class="fa fa-id-card" aria-hidden="true"></i> Id</th>
+                            <th scope="col"><i class="fa fa-user" aria-hidden="true"></i> Clinic Name</th>
+                            <th scope="col"><i class="fa fa-envelope-o" aria-hidden="true"></i>Date Created</th>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#clinicModal"><i
+                                    class="fa fa-plus" aria-hidden="true"></i> New Clinic</button>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for clinic in clinics %}
+                        <tr class="">
+                            <td>{{clinic.id}}</td>
+                            <td scope="row">{{clinic.clinic_name}}</td>
+                            <td>{{clinic.created_at}}</td>
 
-                </tbody>
-            </table>
+                        </tr>
+                        {%endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--Clinic form modal-->
+
+    <div class="modal" tabindex="-1" id="clinicModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add new clinic</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" class="form">
+                        <label for="clinicName" class="form-label">
+                            Enter clinic name
+                        </label>
+                        <input type="text" name="clinic_name" id="clinicName" class="form-control">
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        delimiters: ['[[', ']]'],
+        data: {
+          message: 'Hello Vue!'
+        }
+        
+      })
+</script>
 {%endblock body%}

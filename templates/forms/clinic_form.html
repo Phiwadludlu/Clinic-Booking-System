@@ -1,8 +1,6 @@
-{% extends 'base.html'%}
-{% block title %}Add new clinic - DUT Clini {% endblock %}
+
 {% from "_formhelpers.html" import render_field%}
-{% include "components/navbar.html" %}
-{% block body %}
+
 <div class="container py-3 ">
     {%with messages = get_flashed_messages()%}
     {% if messages%}
@@ -24,5 +22,5 @@
     {%endwith%}
 </div>
 
-{% endblock body%}
-{% include "components/allrights.html"}
+
+
