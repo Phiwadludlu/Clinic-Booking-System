@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+{%from "components/dashboard_sidebar.html" import render_sidebar%}
+{%block title %} Manage Appointments {%endblock title %}
+
+{%block body %}
+<div class="row ">
+    <div class="col-sm-3 d-none d-lg-block">
+        {{render_sidebar("appointments",current_user)}}
+    </div>
+    <div class="col-sm-9 py-3">
+        <div class="mb-4">
+            <h3>Manage Appointments</h3>
+        </div>
+        <div class="col-sm-3 mb-3 ">
+            <form action="" method="get" >
+                <input type="search" name="" id="" class="form-control col-sm-3" placeholder="Search appointment by email">
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th scope="col"><i class="fa fa-id-card" aria-hidden="true"></i> Id</th>
+                        <th scope="col"><i class="fa fa-hospital" aria-hidden="true"></i> Clinic Name</th>
+                        <th scope="col"><i class="fa fa-user" aria-hidden="true"></i> Student Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr class="">
+                        <td>{{appointment.id}}</td>
+                        <td scope="row">{{appointment.clinic.clinic_name}}</td>
+                        <td>{{appointment.user.username}}</td>
+                        
+                    </tr>
+                    {%endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock body%}

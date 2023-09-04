@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+{%from "components/dashboard_sidebar.html" import render_sidebar%}
+{%block title %} Manage Clinics {%endblock title %}
+
+{%block body %}
+<div class="row ">
+    <div class="col-sm-3 d-none d-lg-block">
+        {{render_sidebar("clinics",current_user)}}
+    </div>
+    <div class="col-sm-9 py-3">
+        <div class="mb-4">
+            <h3>Manage Clinics</h3>
+        </div>
+        <div class="col-sm-3 mb-3 ">
+            <form action="" method="get" >
+                <input type="search" name="" id="" class="form-control col-sm-3" placeholder="Search by name">
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th scope="col"><i class="fa fa-id-card" aria-hidden="true"></i> Id</th>
+                        <th scope="col"><i class="fa fa-user" aria-hidden="true"></i> Clinic Name</th>
+                        <th scope="col"><i class="fa fa-envelope-o" aria-hidden="true"></i>Date Created</th>
+                        <button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Clinic</button>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for clinic in clinics %}
+                    <tr class="">
+                        <td>{{clinic.id}}</td>
+                        <td scope="row">{{clinic.clinic_name}}</td>
+                        <td>{{clinic.created_at}}</td>
+                        
+                    </tr>
+                    {%endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock body%}

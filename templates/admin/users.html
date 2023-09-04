@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+{%from "components/dashboard_sidebar.html" import render_sidebar%}
+{%block title %} Manage Users {%endblock title %}
+
+{%block body %}
+<div class="row ">
+    <div class="col-sm-3 d-none d-lg-block">
+        {{render_sidebar("users",current_user)}}
+    </div>
+    <div class="col-sm-9 py-3">
+        <div class="mb-4">
+            <h3>Manage Users</h3>
+        </div>
+        <div class="col-sm-3 mb-3">
+            <form action="" method="get" >
+                <input type="search" name="" id="" class="form-control col-sm-3" placeholder="Search user with email">
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th scope="col"><i class="fa fa-user" aria-hidden="true"></i> Username</th>
+                        <th scope="col"><i class="fa fa-envelope" aria-hidden="true"></i> Email</th>
+                        <th scope="col">Date Joined</th>
+                        <th scope="col">Actions</th>
+                        <button class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New User</button>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr class="">
+                        <td scope="row">{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.confirmed_at}}</td>
+                    </tr>
+                    {%endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock body%}

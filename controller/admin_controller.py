@@ -1,8 +1,9 @@
 from flask import render_template, redirect, url_for,request
 from flask_security import current_user
 from forms.clinic_form import ClinicForm
-from models.clinic_model import Clinic
+from models.clinic_model import Clinic, Appointment
 from models import db
+from models.user_model import User
 def index():
     if not current_user.is_authenticated:
         return redirect(url_for('security.login', next=request.url))
@@ -11,6 +12,23 @@ def index():
 
 def admin_dashboard():
     return render_template("admin/dashboard.html")
+
+def admin_clinic():
+
+    clinics = Clinic.query.all()
+
+    return render_template("admin/clinic.html",clinics=clinics)
+
+def admin_users():
+
+    users = User.query.all()
+
+    return render_template("admin/users.html", users=users)
+
+def admin_appointments():
+    appointments = Appointment.query.all()
+
+    return render_template("admin/admin_appointments.html", appointments=appointments)
 
 def add_clinics():
 

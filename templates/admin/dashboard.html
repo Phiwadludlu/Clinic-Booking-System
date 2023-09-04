@@ -1,43 +1,69 @@
 {% extends "admin/base.html" %}
-{% block title %}Dashboard - DUT Clinic {% endblock title %}
+{%from "components/dashboard_sidebar.html" import render_sidebar%}
+{%block title %} Admin Dashboard {%endblock title %}
 
-{% block body %}
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-</script>
- <!--Sidebar-->
-    {% include "components/dashboard_sidebar.html" %} 
-    <div>
-        <canvas id="myChart"></canvas>
+{%block body %}
+
+<div class="row ">
+    <div class="col-sm-3 d-none d-lg-block">
+        {{render_sidebar("dashboard",current_user)}}
     </div>
-
-    <script>
-        let ctx = document.getElementById("myChart").getContext("2d");
-        let myChart = new Chart(ctx, {
-            type: "line",
-            data: {
-                labels: [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday",
-                ],
-                datasets: [
-                    {
-                        label: "work load",
-                        data: [2, 9, 3, 17, 6, 3, 7],
-                        backgroundColor: "rgba(153,205,1,0.6)",
-                    },
-                    {
-                        label: "free hours",
-                        data: [2, 2, 5, 5, 2, 1, 10],
-                        backgroundColor: "rgba(155,153,10,0.6)",
-                    },
-                ],
-            },
-        });
-    </script>
-{% endblock body%}
+    <div class="col-sm-9 py-3 ">
+        <div class="d-flex mb-4 justify-content-between">
+            <h3>Welcome {{current_user.username}}</h3>
+            <div class="">
+            <button class="btn btn-primary d-lg-none d-md-block" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"><i class="fa fa-bars" aria-hidden="true"></i></button>
+            </div>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasRightLabel">Dashboard</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 ">
+            <form action="" method="get">
+                <input type="search" name="" id="" class="form-control col-sm-3" placeholder="Search user with email">
+            </form>
+        </div>
+        <div class="container">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+</div>
+<script>
+    let ctx = document.getElementById("myChart").getContext("2d");
+    let myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+            ],
+            datasets: [
+                {
+                    label: "work load",
+                    data: [2, 9, 3, 17, 6, 3, 7],
+                    backgroundColor: "rgba(153,205,1,0.6)",
+                },
+                {
+                    label: "free hours",
+                    data: [2, 2, 5, 5, 2, 1, 10],
+                    backgroundColor: "rgba(155,153,10,0.6)",
+                },
+            ],
+        },
+    });
+</script>
+{%endblock body%}
