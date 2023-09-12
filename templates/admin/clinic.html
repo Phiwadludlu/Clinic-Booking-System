@@ -1,5 +1,6 @@
 {% extends "admin/base.html" %}
 {%from "components/dashboard_sidebar.html" import render_sidebar%}
+{% from "_formhelpers.html" import render_field %}
 {%block title %} Manage Clinics {%endblock title %}
 
 {%block body %}
@@ -54,23 +55,44 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST" class="form">
-                        <label for="clinicName" class="form-label">
-                            Enter clinic name
-                        </label>
-                        <input type="text" name="clinic_name" id="clinicName" class="form-control">
+                    <form action="{{url_for("admin.admin_clinic")}}" method="POST" class="form">
+                        {{form.csrf_token}}
 
+                        {{render_field(form.clinic_name, class= "form-control mb-3")}}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
+                
             </div>
         </div>
     </div>
 </div>
 
+{%with messages = get_flashed_messages()%}
+
+    {% if messages%}
+    {% for message in messages %}
+
+<!--Notification toast-->
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Success</strong>
+      <small>10 secs ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        {{message[1]}}
+    </div>
+  </div>
+  {% endfor%}
+
+<!--End Notification toast-->
+{% endif %}
+{% endwith %}
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
 <script>
     var app = new Vue({

@@ -2,6 +2,7 @@
 {% from "security/_macros.html" import render_field_with_errors, render_field, render_form_errors %}
 
 {% block body %}
+{% include "components/navbar.html" %}
 <div class="container py-3 px-3">
   {% include "security/_messages.html" %}
   <h1>{{ _fsdomain('Register') }}</h1>

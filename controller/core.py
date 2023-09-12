@@ -1,6 +1,6 @@
 import json
 from flask import render_template, redirect, url_for,request, flash
-from flask_security import current_user
+from flask_security import current_user, auth_required
 from forms.appointment_form import AppointmentForm
 from models.clinic_model import Appointment
 from models import db
@@ -21,6 +21,7 @@ def contact_us_page():
 def dashboard():
     return render_template("admin/dashboard.html")
 
+@auth_required()
 def appointment():
     form = AppointmentForm()
     

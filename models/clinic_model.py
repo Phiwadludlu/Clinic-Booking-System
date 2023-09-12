@@ -27,6 +27,7 @@ class Appointment(db.Model):
     user = db.relationship('User', backref='appointments')
     clinic = db.relationship('Clinic', backref='appointments')
 
+
 #Marshmallow schemas
 class ClinicIn(Schema):
     id = fields.Int()
